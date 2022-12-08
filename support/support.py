@@ -10,7 +10,9 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+from typing import Any
 from typing import Generator
+from typing import Sequence
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -238,3 +240,11 @@ class Direction4(enum.Enum):
 
     def apply(self, x: int, y: int, *, n: int = 1) -> tuple[int, int]:
         return self.x * n + x, self.y * n + y
+
+
+def moving_window(
+    arr: Sequence[Any],
+    length: int,
+) -> Generator[Sequence[Any], None, None]:
+    for i in range(len(arr) - length + 1):
+        yield arr[i:i+length]

@@ -53,3 +53,19 @@ def test_direction4() -> None:
     assert support.Direction4.UP.ccw is support.Direction4.LEFT
     assert support.Direction4.UP.opposite is support.Direction4.DOWN
     assert support.Direction4.UP.apply(0, 0) == (0, -1)
+
+
+def test_moving_window() -> None:
+    assert list(support.moving_window([1, 2, 3, 4, 5], 2)) == [
+        [1, 2], [2, 3], [3, 4], [4, 5],
+    ]
+    assert list(support.moving_window([1, 2, 3, 4, 5], 3)) == [
+        [1, 2, 3], [2, 3, 4], [3, 4, 5],
+    ]
+
+    assert list(support.moving_window((1, 2, 3, 4, 5), 2)) == [
+        (1, 2), (2, 3), (3, 4), (4, 5),
+    ]
+    assert list(support.moving_window((1, 2, 3, 4, 5), 3)) == [
+        (1, 2, 3), (2, 3, 4), (3, 4, 5),
+    ]
